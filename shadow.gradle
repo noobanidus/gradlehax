@@ -20,7 +20,7 @@ if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_v
     }
 
     dependencies {
-        if (!registrate_version.isEmpty()) {
+        if (project.hasProperty("registrate_version")) {
             def registrate = "com.tterrag.registrate:Registrate:${registrate_version}"
             implementation fg.deobf(registrate)
             shade registrate
@@ -36,10 +36,10 @@ if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_v
     shadowJar {
         shadowJar {
             configurations = [project.configurations.shade]
-            if (!registrate_version.isEmpty()) {
+            if (project.hasProperty("registrate_version")) {
                 relocate "com.tterrag.registrate", "${group}.repack.registrate"
             }
-            if (!noobutil_version.isEmpty()) {
+            if (project.hasProperty("noobutil_version")) {
                 relocate "noobanidus.libs.noobutil", "${group}.repack.noobutil"
             }
             classifier ""
