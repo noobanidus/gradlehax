@@ -26,7 +26,7 @@ if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_v
             shade registrate
         }
 
-        if (!noobutil_version.isEmpty) {
+        if (project.hasProperty("noobutil_version")) {
             def noobutil = "noobanidus.libs:noobutil:${noobutil_version}"
             implementation fg.deobf(noobutil)
             shade noobutil
