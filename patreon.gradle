@@ -3,9 +3,7 @@
 */
 import groovy.json.JsonSlurper
 
-import java.util.stream.Collectors
-
-if (project.hasProperty('patreon_campaign_id') && findProperty('patreon_auth_token')) {
+if (!project.hasProperty("patreon_disabled") && project.hasProperty('patreon_campaign_id') && findProperty('patreon_auth_token')) {
 
     def defaultCampaign = project.findProperty('patreon_campaign_id')
     def defaultAuth = project.findProperty('patreon_auth_token')
