@@ -25,6 +25,6 @@ For a full setup, you will need the appropriate `build.gradle` and `gradle.prope
 
 Additionally, you will most likely need to delete your current `gradle` folder. Once you have committed the removal of the folder, you can then instantiate the submodule.
 
-Through the command-line, this is done thus: `git submodule add https://github.com/noobanidus/gradlewhax gradle`. You will want to use `git submodule init` to initialise the submodule in a new project, and `git submodule update` if the submodule has been changed remotely. To update the submodule to the latest HEAD of this repository, run `git submodule update --remote`.
+Through the command-line, this is done thus: `git submodule add https://github.com/noobanidus/gradlewhax gradle`. You will want to use `git submodule init` to initialise the submodule in a new checkout of an existing project, and `git submodule update` if the submodule has been changed remotely, after pulling. To update the submodule to the latest HEAD of this repository, run `git submodule update --remote` and then commit the changes.
 
 Finally, you will need and replace your `gradlew` and `gradlew.bat` files with the versions from this repository. 
