@@ -17,9 +17,11 @@ Some of the additional features include:
 - It adds the capacity to per-project disable Patreon integration (define `patreon_disabled=true` in your `gradle.properties`)
 - It allows you to specify the `previous_commit` using `gradle.properties`. Warning: failing to set this to a valid commit (or failing to unset it) will result in IDE imports failing almost immediately. This may be removed in future.
 
+Individual modules that you don't require can be removed from the `build.gradle` file.
+
 ## Setup
 
-For a full setup, you will need the appropriate `build.gradle` and `gradle.properties` file. See the [wiki](https://github.com/noobanidus/gradlehax/wiki) for examples of these.
+For a full setup, you will need the appropriate `build.gradle` and `gradle.properties` file. **See the [wiki](https://github.com/noobanidus/gradlehax/wiki) for examples of these.**
 
 Additionally, you will most likely need to delete your current `gradle` folder. Once you have committed the removal of the folder, you can then instantiate the submodule.
 
