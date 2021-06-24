@@ -1,0 +1,15 @@
+apply from: 'gradle/property_helper.gradle'
+
+if (project.hasProperty("top_version")) {
+    def top_version = getRequiredString("top_version")
+
+    repositories {
+        maven {
+            url "http://maven.tterrag.com/"
+        }
+    }
+
+    dependencies {
+        compile fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:${top_version}")
+    }
+}

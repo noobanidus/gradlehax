@@ -1,0 +1,16 @@
+apply from: 'gradle/property_helper.gradle'
+
+if (project.hasProperty("hwyla_version")) {
+    def hwyla_version = getRequiredString("hwyla_version")
+
+    repositories {
+        maven {
+            name = "TehNut's Maven (HWYLA)"
+            url "https://maven.tehnut.info/"
+        }
+    }
+
+    dependencies {
+        compile fg.deobf("mcp.mobius.waila:Hwyla:${hwyla_version}")
+    }
+}
