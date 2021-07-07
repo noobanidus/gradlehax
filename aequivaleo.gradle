@@ -10,7 +10,7 @@ if (project.hasProperty("aequivaleo_version")) {
     }
 
     dependencies {
-        runetimeOnly fg.deobf("com.lddteam:aequivaleo:${aequivaleo_version}:universal")
+        runtimeOnly fg.deobf("com.lddteam:aequivaleo:${aequivaleo_version}:universal")
         compileOnly fg.deobf("com.lddteam:aequivaleo:${aequivaleo_version}:api")
         compileOnly fg.deobf("com.lddteam:aequivaleo:${aequivaleo_version}:vanilla-api")
     }
