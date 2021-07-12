@@ -1,0 +1,16 @@
+apply from: 'gradle/property_helper.gradle'
+
+if (project.hasProperty("carrier_bees_version")) {
+    def carrier_bees_version = getRequiredString("carrier_bees_version")
+
+    repositories {
+        maven {
+            name = "Jared"
+            url = "https://maven.blamejared.com"
+        }
+    }
+
+    dependencies {
+        compile fg.deobf("noobanidus.mods.carrierbees:carrierbees:${carrier_bees_version}")
+    }
+}
