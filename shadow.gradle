@@ -3,8 +3,6 @@ apply from: 'gradle/property_helper.gradle'
 if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_version")) {
     def registrate_version = getOptionalString("registrate_version")
     def noobutil_version = getOptionalString("noobutil_version")
-    def carrier_bees_version = getOptionalString("carrier_bees_version")
-    def carrier_bees_build = getOptionalString("carrier_bees_build")
 
     configurations {
         shade
@@ -33,33 +31,23 @@ if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_v
             implementation fg.deobf(noobutil)
             shade noobutil
         }
-
-        if (project.hasProperty("carrier_bees_version")) {
-            def carrier_bees = "noobanidus.mods.carrierbees:carrierbees-1.16.5:${carrier_bees_version}.${carrier_bees_build}"
-            implementation fg.deobf(carrier_bees)
-            shade carrier_bees
-        }
     }
 
     shadowJar {
-        configurations = [project.configurations.shade]
-        def shadow_group = getRequiredString("group")
-        exclude 'META-INF/**'
-        exclude '.cache/**'
-        if (project.hasProperty("carrier_bees_version")) {
-            relocate 'noobanidus.mods.carrierbees.repack.noobutil', '${shadow_group}.repack.noobutil'
-            relocate 'noobanidus.mods.carrierbees.repack.registrate', '${shadow_group}.repack.registrate'
-            relocate "noobanidus.mods.carrierbees", "${shadow_group}"
+        shadowJar {
+            configurations = [project.configurations.shade]
+            def shadow_group = getRequiredString("group")
+            exclude 'META-INF/**'
+            exclude '.cache/**'
+            if (project.hasProperty("registrate_version")) {
+                relocate "com.tterrag.registrate", "${shadow_group}.repack.registrate"
+            }
+            if (project.hasProperty("noobutil_version")) {
+                relocate "noobanidus.libs.noobutil", "${shadow_group}.repack.noobutil"
+            }
+            minimize()
+            classifier ""
         }
-        if (project.hasProperty("registrate_version")) {
-            relocate "com.tterrag.registrate", "${shadow_group}.repack.registrate"
-        }
-        if (project.hasProperty("noobutil_version")) {
-            relocate "noobanidus.libs.noobutil", "${shadow_group}.repack.noobutil"
-        }
-
-        minimize()
-        classifier ""
     }
 
     reobf {
