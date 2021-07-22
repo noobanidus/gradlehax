@@ -4,10 +4,7 @@ if (project.hasProperty("hwyla_version")) {
     def hwyla_version = getRequiredString("hwyla_version")
 
     repositories {
-        maven {
-            name = "TehNut's Maven (HWYLA)"
-            url "https://maven.tehnut.info/"
-        }
+        mavenLocal()
     }
 
     dependencies {
