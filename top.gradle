@@ -14,7 +14,7 @@ if (project.hasProperty("top_version")) {
         dependencies {
             compile fg.deobf("mcjty.theoneprobe:TheOneProbe-${top_version}")
         }
-    else {
+    } else {
         dependencies {
             compile fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:${top_version}")
         }
