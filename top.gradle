@@ -2,7 +2,7 @@ apply from: 'gradle/property_helper.gradle'
 
 if (project.hasProperty("top_version")) {
     def top_version = getRequiredString("top_version")
-    def minecraft_version = getRequireString("minecraft_version")
+    def minecraft_version = getRequiredString("minecraft_version")
 
     repositories {
         maven {
