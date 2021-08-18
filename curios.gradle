@@ -1,0 +1,15 @@
+apply from: 'gradle/property_helper.gradle'
+
+if (project.hasProperty("curios_version")) {
+    def curios_version = getRequiredString("curios_version")
+    def minecraft_version = getRequiredString("minecraft_version")
+    repositories {
+        maven {
+            url = "https://maven.theillusivec4.top/"
+        }
+    }
+
+    dependencies {
+        implementation fg.deobf("top.theillusivec4.curios:curios-forge:${minecraft_version}-${curios_version}")
+    }
+}
