@@ -1,0 +1,13 @@
+apply from: 'gradle/property_helper.gradle'
+
+if (project.hasProperty("geckolib_version")) {
+    def geckolib_version = getRequiredString("geckolib_version")
+    def minecraft_version = getRequiredString("minecraft_version")
+    repositories {
+        maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
+    }
+
+    dependencies {
+        implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_version}")
+    }
+}

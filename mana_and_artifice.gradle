@@ -1,0 +1,10 @@
+apply from: 'gradle/property_helper.gradle'
+apply from: 'gradle/cursemaven.gradle'
+
+if (project.hasProperty("mana_artifice_version")) {
+    def mana_artifice_version = getRequiredString("mana_artifice_version")
+
+    dependencies {
+        implementation fg.deobf("curse.maven:mana-and-artifice-406360:${mana_artifice_version}")
+    }
+}
