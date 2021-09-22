@@ -1,0 +1,15 @@
+apply from: 'gradle/property_helper.gradle'
+
+if (project.hasProperty("blame_version")) {
+    def blame_version = getRequiredString("blame_version")
+
+    repositories {
+        maven {
+            url "https://nexus.resourcefulbees.com/repository/maven-public/"
+        }
+    }
+
+    dependencies {
+        runtimeOnly fg.deobf("com.telepathicgrunt:Blame:${blame_version}")
+    }
+}

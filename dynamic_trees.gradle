@@ -1,0 +1,32 @@
+apply from: 'gradle/property_helper.gradle'
+
+if (project.hasProperty("dynamic_trees_version")) {
+    def dynamic_trees_version = getOptionalString("dynamic_trees_version")
+    def dynamic_trees_plus_version = getOptionalString("dynamic_trees_plus_version")
+    def mcVersion = getProperty("minecraft_version")
+
+    def runtime = getDefaultBoolean("dynamic_trees", false)
+
+    repositories {
+        maven {
+            url "http://harleyoconnor.com/maven"
+<<<<<<< HEAD
+=======
+            allowInsecureProtocol true
+>>>>>>> 31b5020 (Reinstate modules.)
+        }
+    }
+
+    dependencies {
+        def dt = "com.ferreusveritas.dynamictrees:DynamicTrees-${mcVersion}:${dynamic_trees_version}"
+        if (runtime) {
+<<<<<<< HEAD
+            compile fg.deobf(dt)
+=======
+            implementation fg.deobf(dt)
+>>>>>>> 31b5020 (Reinstate modules.)
+        } else {
+            compileOnly fg.deobf(dt)
+        }
+    }
+}

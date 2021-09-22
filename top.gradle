@@ -1,0 +1,34 @@
+apply from: 'gradle/property_helper.gradle'
+
+if (project.hasProperty("top_version")) {
+    def top_version = getRequiredString("top_version")
+    def minecraft_version = getRequiredString("minecraft_version")
+
+    repositories {
+        maven {
+<<<<<<< HEAD
+            url "http://maven.tterrag.com/"
+=======
+            url "https://maven.tterrag.com/"
+>>>>>>> 31b5020 (Reinstate modules.)
+        }
+    }
+
+    if ("1.12.2".equals(minecraft_version)) {
+        dependencies {
+<<<<<<< HEAD
+            compile fg.deobf("mcjty.theoneprobe:TheOneProbe-${top_version}")
+        }
+    } else {
+        dependencies {
+            compile fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:${top_version}")
+=======
+            implementation fg.deobf("mcjty.theoneprobe:TheOneProbe-${top_version}")
+        }
+    } else {
+        dependencies {
+            implementation fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:${top_version}")
+>>>>>>> 31b5020 (Reinstate modules.)
+        }
+    }
+}

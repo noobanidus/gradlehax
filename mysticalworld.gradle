@@ -1,0 +1,21 @@
+apply from: 'gradle/property_helper.gradle'
+
+if (project.hasProperty("mysticalworld_version")) {
+    def mysticalworld_version = getRequiredString("mysticalworld_version")
+    def mysticalworld_build = getRequiredString("mysticalworld_build")
+
+    repositories {
+        maven {
+            name = "Jared"
+            url = "https://maven.blamejared.com"
+        }
+    }
+
+    dependencies {
+<<<<<<< HEAD
+        compile fg.deobf("mysticmods.mysticalworld:mysticalworld-${mysticalworld_version}.${mysticalworld_build}")
+=======
+        implementaiton fg.deobf("mysticmods.mysticalworld:mysticalworld-${mysticalworld_version}.${mysticalworld_build}")
+>>>>>>> 31b5020 (Reinstate modules.)
+    }
+}

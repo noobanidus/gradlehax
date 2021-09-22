@@ -74,10 +74,11 @@ curseforge {
         project {
 
             id = "${curse_project}"
+            debug = false
             releaseType = getDefaultString('curse_release_type', 'alpha')
             changelog = project.ext.modChangelog
             
-            if (project.ext.patreon && project.ext.patreon.pledgeLog) {
+            if (!project.hasProperty("patreon_disabled") && project.ext.patreon && project.ext.patreon.pledgeLog) {
                 
                 def patreonText = project.ext.patreon.campaignUrlTracked ? "[Patreon](${project.ext.patreon.campaignUrlTracked})" : 'Patreon'
                 changelog += "\n\nThis mod was made possible by ${patreonText} support from players like you. Thank you!\n\n${project.ext.patreon.pledgeLog}"
@@ -92,33 +93,53 @@ curseforge {
                     addGameVersion version
                 }
             }
-            
-            else {
-            
-                addGameVersion project.ext.mcVersion
-                addGameVersion 'Forge'
-                addGameVersion 'Java 16'
-            }
 
-            mainArtifact(jar) {
-            
-                if (project.hasProperty('curse_requirements') || project.hasProperty('curse_optionals')) {
-                
-                    relations {
+            if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_version")) {
+                mainArtifact(shadowJar) {
 
-                        if (project.hasProperty('curse_requirements')) {
-                    
-                            for (String req : project.findProperty('curse_requirements').split(', ')) {
-                        
-                                requiredLibrary req
+                    if (project.hasProperty('curse_requirements') || project.hasProperty('curse_optionals')) {
+
+                        relations {
+
+                            if (project.hasProperty('curse_requirements')) {
+
+                                for (String req : project.findProperty('curse_requirements').split(', ')) {
+
+                                    requiredLibrary req
+                                }
+                            }
+
+                            if (project.hasProperty('curse_optionals')) {
+
+                                for (String req : project.findProperty('curse_optionals').split(', ')) {
+
+                                    optionalLibrary req
+                                }
                             }
                         }
-                    
-                        if (project.hasProperty('curse_optionals')) {
-                    
-                            for (String req : project.findProperty('curse_optionals').split(', ')) {
-                        
-                                optionalLibrary req
+                    }
+                }
+            } else {
+                mainArtifact(jar) {
+
+                    if (project.hasProperty('curse_requirements') || project.hasProperty('curse_optionals')) {
+
+                        relations {
+
+                            if (project.hasProperty('curse_requirements')) {
+
+                                for (String req : project.findProperty('curse_requirements').split(', ')) {
+
+                                    requiredLibrary req
+                                }
+                            }
+
+                            if (project.hasProperty('curse_optionals')) {
+
+                                for (String req : project.findProperty('curse_optionals').split(', ')) {
+
+                                    optionalLibrary req
+                                }
                             }
                         }
                     }

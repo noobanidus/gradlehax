@@ -1,0 +1,10 @@
+apply from: 'gradle/property_helper.gradle'
+apply from: 'gradle/cursemaven.gradle'
+
+if (project.hasProperty("stables_version")) {
+    def stables_version = getRequiredString("stables_version")
+
+    dependencies {
+        implementation fg.deobf("curse.maven:stables-422794:${stables_version}")
+    }
+}
