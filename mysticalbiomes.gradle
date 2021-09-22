@@ -8,10 +8,6 @@ if (project.hasProperty("mysticalbiomes_version")) {
     }
 
     dependencies {
-<<<<<<< HEAD
-        compile fg.deobf("noobanidus.mods.mysticalbiomes:mysticalbiomes-${mysticalbiomes_version}")
-=======
         implementation fg.deobf("noobanidus.mods.mysticalbiomes:mysticalbiomes-${mysticalbiomes_version}")
->>>>>>> 31b5020 (Reinstate modules.)
     }
 }

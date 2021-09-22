@@ -12,10 +12,6 @@ if (project.hasProperty("mysticalworld_version")) {
     }
 
     dependencies {
-<<<<<<< HEAD
-        compile fg.deobf("mysticmods.mysticalworld:mysticalworld-${mysticalworld_version}.${mysticalworld_build}")
-=======
         implementaiton fg.deobf("mysticmods.mysticalworld:mysticalworld-${mysticalworld_version}.${mysticalworld_build}")
->>>>>>> 31b5020 (Reinstate modules.)
     }
 }

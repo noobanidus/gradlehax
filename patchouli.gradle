@@ -11,10 +11,6 @@ if (project.hasProperty("patchouli_version")) {
     }
 
     dependencies {
-<<<<<<< HEAD
-        compile fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
-=======
         implementation fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
->>>>>>> 31b5020 (Reinstate modules.)
     }
 }

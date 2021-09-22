@@ -15,11 +15,7 @@ if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_v
         }
         maven {
             name = "tterrag"
-<<<<<<< HEAD
-            url = "http://maven.tterrag.com"
-=======
             url = "https://maven.tterrag.com"
->>>>>>> 31b5020 (Reinstate modules.)
         }
     }
 

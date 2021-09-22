@@ -67,20 +67,12 @@ minecraft {
     runs {
 
         client {
-<<<<<<< HEAD
-            // Sets the folder the client runs in.
-            workingDirectory project.file(clientRunDir)
-            // Sets the name of the run to include the mod name.
-            taskName modName.replaceAll("\\s", "") + 'Client'
-=======
-
             // Sets the folder the client runs in.
             workingDirectory project.file(clientRunDir)
 
             // Sets the name of the run to include the mod name.
             taskName modName.replaceAll("\\s", "") + 'Client'
 
->>>>>>> 31b5020 (Reinstate modules.)
             // Sets Forge's logging level on the client.
             property 'forge.logging.console.level', loggingLevel
 
@@ -149,8 +141,6 @@ minecraft {
             mods {
 
                 serverRun {
-
-<<<<<<< HEAD
                     source sourceSets.main
                 }
             }
@@ -189,8 +179,6 @@ minecraft {
 
             mods {
                 dataRun {
-=======
->>>>>>> 31b5020 (Reinstate modules.)
                     source sourceSets.main
                 }
             }
@@ -214,21 +202,12 @@ dependencies {
 
 
 processResources {
-
-<<<<<<< HEAD
     from(sourceSets.main.resources.srcDirs) {
 
         include 'META-INF/mods.toml'
         include 'pack.mcmeta'
 
         def buildProps = project.properties.clone()
-=======
-    def buildProps = project.properties.clone()
-
-    if (project.ext.has('patreon') && project.ext.patreon.pledges && !project.ext.patreon.pledges.isEmpty()) {
-
-        def supporters = new ArrayList<String>()
->>>>>>> 31b5020 (Reinstate modules.)
 
         if (project.ext.has('patreon') && project.ext.patreon.pledges && !project.ext.patreon.pledges.isEmpty()) {
 
@@ -246,15 +225,9 @@ processResources {
 
             buildProps.put('modCredits', "${project.ext.modCredits} and the supporters on Patreon: ${supporters.join(', ')}")
         }
-
-<<<<<<< HEAD
-=======
-        buildProps.put('modCredits', "${project.ext.modCredits} and the supporters on Patreon: ${supporters.join(', ')}")
     }
 
     filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
-
->>>>>>> 31b5020 (Reinstate modules.)
         expand buildProps
     }
 }
@@ -316,12 +289,7 @@ task runServer() {
 // Forge's Jar Signer
 def canSignJar = project.hasProperty('keyStore') && project.hasProperty('keyStorePass') && project.hasProperty('keyStoreKeyPass') && project.hasProperty('keyStoreAlias')
 
-<<<<<<< HEAD
-task signJar(type: net.minecraftforge.gradle.common.task.SignJar, dependsOn: jar) {
-=======
 task signJar(type: net.minecraftforge.gradle.common.tasks.SignJar, dependsOn: jar) {
->>>>>>> 31b5020 (Reinstate modules.)
-
     onlyIf {
 
         canSignJar

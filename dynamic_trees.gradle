@@ -10,21 +10,14 @@ if (project.hasProperty("dynamic_trees_version")) {
     repositories {
         maven {
             url "http://harleyoconnor.com/maven"
-<<<<<<< HEAD
-=======
             allowInsecureProtocol true
->>>>>>> 31b5020 (Reinstate modules.)
         }
     }
 
     dependencies {
         def dt = "com.ferreusveritas.dynamictrees:DynamicTrees-${mcVersion}:${dynamic_trees_version}"
         if (runtime) {
-<<<<<<< HEAD
-            compile fg.deobf(dt)
-=======
             implementation fg.deobf(dt)
->>>>>>> 31b5020 (Reinstate modules.)
         } else {
             compileOnly fg.deobf(dt)
         }

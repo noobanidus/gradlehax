@@ -12,10 +12,6 @@ if (project.hasProperty("jei_version")) {
     }
 
     dependencies {
-<<<<<<< HEAD
-        compile fg.deobf("mezz.jei:jei-${jei_version}")
-=======
         implementation fg.deobf("mezz.jei:jei-${jei_version}")
->>>>>>> 31b5020 (Reinstate modules.)
     }
 }
