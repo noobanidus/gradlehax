@@ -5,7 +5,5 @@
  number will be set to 0.
 */
 def buildNumber = System.getenv('BUILD_NUMBER') ? System.getenv('BUILD_NUMBER') : System.getenv('TRAVIS_BUILD_NUMBER') ? System.getenv('TRAVIS_BUILD_NUMBER') : '0'
-if (buildNumber != '0') {
-    project.version = "${project.version}.${buildNumber}".toString()
-    project.logger.lifecycle("Appending build number to version. Version is now ${project.version}")
-}
+project.version = "${project.version}.${buildNumber}".toString()
+project.logger.lifecycle("Appending build number to version. Version is now ${project.version}")
