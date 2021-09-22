@@ -196,7 +196,7 @@ dependencies {
 
         // Gradle 5.0+ no longer auto-loads annotation processors. Mixin relies
         // on these to generate the refmap file.
-        annotationProcessor 'org.spongepowered:mixin:0.8.2:processor'
+        annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
     }
 }
 
