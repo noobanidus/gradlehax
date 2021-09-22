@@ -7,38 +7,30 @@ buildscript {
         maven {
 
             name 'Official Forge Maven'
-            url 'https://maven.minecraftforge.net/'
+            url 'https://maven.minecraftforge.net'
         }
 
         maven {
-
             name 'Sponge / Mixin Maven'
             url 'https://repo.spongepowered.org/repository/maven-public'
         }
 
-<<<<<<< HEAD
-=======
         maven {
             name 'ParchmentMC'
             url 'https://maven.parchmentmc.org'
         }
 
-        jcenter()
->>>>>>> 31b5020 (Reinstate modules.)
         mavenCentral()
     }
 
     dependencies {
 
-<<<<<<< HEAD
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.+', changing: true
-=======
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
->>>>>>> 31b5020 (Reinstate modules.)
         classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
         classpath 'org.parchmentmc:librarian:1.+'
     }
 }
+
 apply plugin: net.minecraftforge.gradle.userdev.UserDevPlugin
 apply plugin: org.parchmentmc.librarian.forgegradle.LibrarianForgeGradlePlugin
 apply from: 'gradle/property_helper.gradle'
@@ -58,8 +50,8 @@ def minecraft_version = getRequiredString('minecraft_version')
 def remapRefmap = getDefaultBoolean('mixin_remap_refmap')
 def remapRefmapFile = getDefaultString('mixin_remap_refmap_file', "${projectDir}/build/createSrgToMcp/output.srg")
 
-archivesBaseName = "${mod_id}-${minecraft_version}"
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+// Makes sure jar files are reobfuscated by Forge when built.
+jar.finalizedBy('reobfJar')
 
 minecraft {
 
