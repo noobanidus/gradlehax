@@ -202,6 +202,8 @@ dependencies {
 
 
 processResources {
+    duplicatesStrategy = 'exclude'
+
     def buildProps = project.properties.clone()
     from(sourceSets.main.resources.srcDirs) {
 
