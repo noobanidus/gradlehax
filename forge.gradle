@@ -202,12 +202,8 @@ dependencies {
 
 
 processResources {
+    def buildProps = project.properties.clone()
     from(sourceSets.main.resources.srcDirs) {
-
-        include 'META-INF/mods.toml'
-        include 'pack.mcmeta'
-
-        def buildProps = project.properties.clone()
 
         if (project.ext.has('patreon') && project.ext.patreon.pledges && !project.ext.patreon.pledges.isEmpty()) {
 
