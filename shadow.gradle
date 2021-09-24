@@ -23,9 +23,7 @@ if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_v
         if (project.hasProperty("registrate_version")) {
             def registrate = "com.tterrag.registrate:Registrate:${registrate_version}"
             implementation fg.deobf(registrate)
-            if (!project.hasProperty("no_shade")) {
-                shade registrate
-            }
+            shade registrate
         }
 
         if (project.hasProperty("noobutil_version")) {
@@ -35,29 +33,27 @@ if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_v
         }
     }
 
-    if (!project.hasProperty("no_shade")) {
+    shadowJar {
         shadowJar {
-            shadowJar {
-                configurations = [project.configurations.shade]
-                def shadow_group = getRequiredString("group")
-                //exclude 'META-INF/**'
-                exclude '.cache/**'
-                if (project.hasProperty("registrate_version")) {
-                    relocate "com.tterrag.registrate", "${shadow_group}.repack.registrate"
-                }
-                if (project.hasProperty("noobutil_version")) {
-                    relocate "noobanidus.libs.noobutil", "${shadow_group}.repack.noobutil"
-                }
-                minimize()
-                classifier ""
+            configurations = [project.configurations.shade]
+            def shadow_group = getRequiredString("group")
+            //exclude 'META-INF/**'
+            exclude '.cache/**'
+            if (project.hasProperty("registrate_version")) {
+                relocate "com.tterrag.registrate", "${shadow_group}.repack.registrate"
             }
+            if (project.hasProperty("noobutil_version")) {
+                relocate "noobanidus.libs.noobutil", "${shadow_group}.repack.noobutil"
+            }
+            minimize()
+            classifier ""
         }
-
-        reobf {
-            shadowJar {}
-        }
-
-        jar.setClassifier("nodep")
-        build.dependsOn reobfShadowJar
     }
+
+    reobf {
+        shadowJar {}
+    }
+
+    jar.setClassifier("nodep")
+    build.dependsOn reobfShadowJar
 }
