@@ -12,6 +12,6 @@ if (project.hasProperty("mysticalworld_version")) {
     }
 
     dependencies {
-        implementaiton fg.deobf("mysticmods.mysticalworld:mysticalworld-${mysticalworld_version}.${mysticalworld_build}")
+        implementation fg.deobf("mysticmods.mysticalworld:mysticalworld-${mysticalworld_version}.${mysticalworld_build}")
     }
 }
