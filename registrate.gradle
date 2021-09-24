@@ -1,0 +1,19 @@
+apply from: 'gradle/property_helper.gradle'
+
+if (project.hasProperty("registrate_version")) {
+    def registrate_version = getOptionalString("registrate_version")
+
+    repositories {
+        maven {
+            name = "tterrag"
+            url = "https://maven.tterrag.com"
+        }
+    }
+
+    dependencies {
+        if (project.hasProperty("registrate_version")) {
+            def registrate = "com.tterrag.registrate:Registrate:${registrate_version}"
+            implementation fg.deobf(registrate)
+        }
+    }
+}
