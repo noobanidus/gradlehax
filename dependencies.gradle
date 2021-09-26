@@ -57,11 +57,11 @@ dependencies {
         // Replaces the config GUI with a shiny new one. Mods can enable a 
         // custom menu icon by defining additional properties in the mods.toml
         // file of their mod.
-        deobfRuntime('catalogue', 'curse.maven', 'catalogue-459701', '3399552')
+        // deobfRuntime('catalogue', 'curse.maven', 'catalogue-459701', '3399552')
         
         // Controlling overhauls the keybind menu by adding a search bar and
         // other QoL features.
-        deobfRuntime('controlling', 'com.blamejared.controlling', 'Controlling', '8.0.0')
+        // deobfRuntime('controlling', 'com.blamejared.controlling', 'Controlling', '8.0.0')
     }
 }
 
