@@ -1,0 +1,17 @@
+apply from: 'gradle/property_helper.gradle'
+
+if (project.hasProperty("particleslib_version")) {
+    def particleslib_version = getRequiredString("particleslib_version")
+    def particleslib_build = getRequiredString("particleslib_build")
+
+    repositories {
+        maven {
+            name = "Jared"
+            url = "https://maven.blamejared.com"
+        }
+    }
+
+    dependencies {
+        implementation fg.deobf("noobanidus.libs.particleslib:particleslib-${particleslib_version}.${particleslib_build}")
+    }
+}
