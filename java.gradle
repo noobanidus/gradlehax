@@ -13,7 +13,11 @@ java {
     if (project.hasProperty("java_16")) {
         toolchain.languageVersion = JavaLanguageVersion.of(16)
     } else {
-        toolchain.languageVersion = JavaLanguageVersion.of(8)
+        if (project.hasProperty("java_17")) {
+            toolchain.languageVersion = JavaLanguageVersion.of(17)
+        } else {
+            toolchain.languageVersion = JavaLanguageVersion.of(8)
+        }
     }
 }
 
