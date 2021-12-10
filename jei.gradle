@@ -1,4 +1,5 @@
 apply from: 'gradle/property_helper.gradle'
+apply from: 'gradle/cursemaven.gradle'
 
 if (project.hasProperty("jei_version")) {
     def jei_version = getRequiredString("jei_version")
@@ -13,5 +14,13 @@ if (project.hasProperty("jei_version")) {
 
     dependencies {
         implementation fg.deobf("mezz.jei:jei-${jei_version}")
+    }
+}
+
+if (project.hasProperty("jei_curse_version")) {
+    def jei_version = getRequiredString("jei_curse_version")
+
+    dependencies {
+        implementation fg.deobf("curse.maven:jei-238222:${jei_version}")
     }
 }
