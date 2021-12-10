@@ -8,9 +8,13 @@ java {
     
     // Generate a JavaDoc JAR.
     withJavadocJar()
-    
-    // Set minimum language version.
-    toolchain.languageVersion = JavaLanguageVersion.of(8)
+
+    // Set minimum language version.  
+    if (project.hasProperty("java_16")) {
+        toolchain.languageVersion = JavaLanguageVersion.of(16)
+    } else {
+        toolchain.languageVersion = JavaLanguageVersion.of(8)
+    }
 }
 
 javadoc {
