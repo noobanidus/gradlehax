@@ -19,17 +19,33 @@ if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_v
         }
     }
 
+        dependencies {
+            if (project.hasProperty("registrate_version")) {
+                def registrate = "com.tterrag.registrate:Registrate:${registrate_version}"
+                implementation fg.deobf(registrate)
+            }
+
+            if (project.hasProperty("noobutil_version")) {
+                def noobutil = "noobanidus.libs:noobutil${noobutil_version}"
+                implementation fg.deobf(noobutil)
+            }
+        }
+
     dependencies {
         if (project.hasProperty("registrate_version")) {
             def registrate = "com.tterrag.registrate:Registrate:${registrate_version}"
             implementation fg.deobf(registrate)
-            shade registrate
+            if (!project.hasProperty("no_shade")) {
+                shade registrate
+            }   
         }
 
         if (project.hasProperty("noobutil_version")) {
             def noobutil = "noobanidus.libs:noobutil${noobutil_version}"
             implementation fg.deobf(noobutil)
-            shade noobutil
+            if (!project.hasProperty("no_shade")) {
+                shade noobutil
+            }
         }
     }
 
@@ -39,13 +55,15 @@ if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_v
             def shadow_group = getRequiredString("group")
             //exclude 'META-INF/**'
             exclude '.cache/**'
-            if (project.hasProperty("registrate_version")) {
-                relocate "com.tterrag.registrate", "${shadow_group}.repack.registrate"
+            if (!project.hasProperty("no_shade")) {
+                if (project.hasProperty("registrate_version")) {
+                    relocate "com.tterrag.registrate", "${shadow_group}.repack.registrate"
+                }
+                if (project.hasProperty("noobutil_version")) {
+                    relocate "noobanidus.libs.noobutil", "${shadow_group}.repack.noobutil"
+                }
+                minimize()
             }
-            if (project.hasProperty("noobutil_version")) {
-                relocate "noobanidus.libs.noobutil", "${shadow_group}.repack.noobutil"
-            }
-            minimize()
             classifier ""
         }
     }
