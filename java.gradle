@@ -42,6 +42,7 @@ jar {
                 'Built-On-Java'           : "${System.getProperty('java.vm.version')} (${System.getProperty('java.vm.vendor')})"
         ])
     }
+    classifier = "noembed"
 }
 
 task deobfJar (type: Jar) {
@@ -72,7 +73,7 @@ task embedJar (type: Jar) {
     exclude "noobanidus/mods/shoulders/gen/**"
     exclude "noobanidus/mods/shoulders/setup/**"
 
-    archiveClassifier = "embed"
+    archiveClassifier = ""
     manifest {
         attributes(
                 'FMLModType': 'LIBRARY')
