@@ -5,7 +5,7 @@ java {
 
     // Generate a sources JAR.
     withSourcesJar()
-    
+
     // Generate a JavaDoc JAR.
     withJavadocJar()
 
@@ -28,52 +28,54 @@ javadoc {
 }
 
 jar {
-    if (project.hasProperty("library")) {
-        if (project.hasProperty("java_17")) {
-            manifest {
-                attributes([
-                        'FMLModType'              : 'GAMELIBRARY',
-                        'Timestamp'               : System.currentTimeMillis(),
-                        'Specification-Title'     : project.ext.modName,
-                        'Specification-Vendor'    : project.ext.modAuthor,
-                        'Specification-Version'   : project.version,
-                        'Implementation-Title'    : project.ext.modName,
-                        'Implementation-Version'  : project.version,
-                        'Implementation-Vendor'   : project.ext.modAuthor,
-                        'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                        'Built-On-Java'           : "${System.getProperty('java.vm.version')} (${System.getProperty('java.vm.vendor')})"
-                ])
-            }
-        } else {
-            manifest {
-                attributes([
-                        'FMLModType'              : 'LIBRARY',
-                        'Timestamp'               : System.currentTimeMillis(),
-                        'Specification-Title'     : project.ext.modName,
-                        'Specification-Vendor'    : project.ext.modAuthor,
-                        'Specification-Version'   : project.version,
-                        'Implementation-Title'    : project.ext.modName,
-                        'Implementation-Version'  : project.version,
-                        'Implementation-Vendor'   : project.ext.modAuthor,
-                        'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                        'Built-On-Java'           : "${System.getProperty('java.vm.version')} (${System.getProperty('java.vm.vendor')})"
-                ])
-            }
-        }
-
-    } else {
-        manifest {
-            attributes([
-                'Timestamp': System.currentTimeMillis(),
-                'Specification-Title': project.ext.modName,
-                'Specification-Vendor': project.ext.modAuthor,
-                'Specification-Version': project.version,
-                'Implementation-Title': project.ext.modName,
-                'Implementation-Version': project.version,
-                'Implementation-Vendor' : project.ext.modAuthor,
+    manifest {
+        attributes([
+                'FMLModType'              : 'LIBRARY',
+                'Timestamp'               : System.currentTimeMillis(),
+                'Specification-Title'     : project.ext.modName,
+                'Specification-Vendor'    : project.ext.modAuthor,
+                'Specification-Version'   : project.version,
+                'Implementation-Title'    : project.ext.modName,
+                'Implementation-Version'  : project.version,
+                'Implementation-Vendor'   : project.ext.modAuthor,
                 'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                'Built-On-Java': "${System.getProperty('java.vm.version')} (${System.getProperty('java.vm.vendor')})"
-            ])
-        }
+                'Built-On-Java'           : "${System.getProperty('java.vm.version')} (${System.getProperty('java.vm.vendor')})"
+        ])
+    }
+}
+
+task deobfJar (type: Jar) {
+    from(sourceSets.main.output)
+    exclude "data/**"
+    exclude "META-INF/mods.toml"
+    exclude "META-INF/accesstransformer.cfg"
+    exclude ".cache"
+    exclude "noobanidus/mods/shoulders/Shoulders**"
+    exclude "noobanidus/mods/shoulders/gen/**"
+    exclude "noobanidus/mods/shoulders/setup/**"
+
+    archiveClassifier = "deobf"
+    manifest {
+        attributes(
+                'FMLModType': 'LIBRARY')
+
+    }
+}
+
+task embedJar (type: Jar) {
+    from(sourceSets.main.output)
+    exclude "data/**"
+    exclude "META-INF/mods.toml"
+    exclude "META-INF/accesstransformer.cfg"
+    exclude ".cache"
+    exclude "noobanidus/mods/shoulders/Shoulders**"
+    exclude "noobanidus/mods/shoulders/gen/**"
+    exclude "noobanidus/mods/shoulders/setup/**"
+
+    archiveClassifier = "embed"
+    manifest {
+        attributes(
+                'FMLModType': 'LIBRARY')
+
     }
 }

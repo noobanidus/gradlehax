@@ -30,22 +30,8 @@ if (canLoad) {
 
                 artifactId project.archivesBaseName
 
-                // Base mod archive.
-                if (project.hasProperty("api")) {
-                    artifact apiJar
-                }
-
                 artifact jar
-
-                // Adds the sources as an artifact.
-                artifact project.sourcesJar {
-                    classifier 'sources'
-                }
-
-/*                // Adds the javadocs as an artifact.
-                artifact project.javadocJar {
-                    classifier 'javadoc'
-                }*/
+                artifact deobfJar
             }
         }
 
