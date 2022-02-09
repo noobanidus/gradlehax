@@ -32,6 +32,7 @@ if (canLoad) {
 
                 artifact jar
                 artifact deobfJar
+                artifact embedJar
             }
         }
 
