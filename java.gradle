@@ -51,9 +51,9 @@ task deobfJar (type: Jar) {
     exclude "META-INF/mods.toml"
     exclude "META-INF/accesstransformer.cfg"
     exclude ".cache"
-    exclude "noobanidus/mods/shoulders/Shoulders**"
-    exclude "noobanidus/mods/shoulders/gen/**"
-    exclude "noobanidus/mods/shoulders/setup/**"
+    exclude "noobanidus/libs/shoulders/Shoulders**"
+    exclude "noobanidus/libs/shoulders/gen/**"
+    exclude "noobanidus/libs/shoulders/setup/**"
 
     archiveClassifier = "deobf"
     manifest {
@@ -69,9 +69,9 @@ task embedJar (type: Jar) {
     exclude "META-INF/mods.toml"
     exclude "META-INF/accesstransformer.cfg"
     exclude ".cache"
-    exclude "noobanidus/mods/shoulders/Shoulders**"
-    exclude "noobanidus/mods/shoulders/gen/**"
-    exclude "noobanidus/mods/shoulders/setup/**"
+    exclude "noobanidus/libs/shoulders/Shoulders**"
+    exclude "noobanidus/libs/shoulders/gen/**"
+    exclude "noobanidus/libs/shoulders/setup/**"
 
     archiveClassifier = ""
     manifest {
