@@ -1,8 +1,9 @@
 apply from: 'gradle/property_helper.gradle'
 
-if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_version")) {
+if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_version") || project.hasProperty("shoulders_version")) {
     def registrate_version = getOptionalString("registrate_version")
     def noobutil_version = getOptionalString("noobutil_version")
+    def shoulders_version = getOptionalString("shoulders_version")
 
     configurations {
         shade
@@ -47,6 +48,12 @@ if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_v
                 shade noobutil
             }
         }
+
+        if (project.hasProperty("shoulders_version")) {
+            def shoulders = "noobanidus.libs.shoulders:shoulders${shoulders_version}"
+            implementation fg.deobf(shoulders)
+            shade shoulders
+        }
     }
 
     shadowJar {
@@ -62,8 +69,16 @@ if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_v
                 if (project.hasProperty("noobutil_version")) {
                     relocate "noobanidus.libs.noobutil", "${shadow_group}.repack.noobutil"
                 }
-                minimize()
+                if (project.hasProperty("shoulders_version")) {
+                    relocate "noobanidus.libs.shoulders", "${shadow_group}.repack.shoulders"
+                    minimize {
+                        exclude(dependency('noobanidus.libs.shoulders:.*:.*'))
+                    }
+                } else {
+                    minimize()
+                }
             }
+
             classifier ""
         }
     }
