@@ -94,7 +94,7 @@ curseforge {
                 }
             }
 
-            if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_version")) {
+            if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_version") || project.hasProperty("shoulders_version")) {
                 mainArtifact(shadowJar) {
 
                     if (project.hasProperty('curse_requirements') || project.hasProperty('curse_optionals')) {
