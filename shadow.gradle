@@ -1,6 +1,6 @@
 apply from: 'gradle/property_helper.gradle'
 
-if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_version")) {
+if (project.hasProperty("registrate_version") || project.hasProperty("noobutil_version") || project.hasProperty("no_shade")) {
     def registrate_version = getOptionalString("registrate_version")
     def noobutil_version = getOptionalString("noobutil_version")
 
