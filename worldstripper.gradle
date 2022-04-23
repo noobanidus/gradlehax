@@ -1,0 +1,10 @@
+apply from: 'gradle/property_helper.gradle'
+apply from: 'gradle/cursemaven.gradle'
+
+if (project.hasProperty("ws_version")) {
+    def ws_version = getRequiredString("ws_version")
+
+    dependencies {
+        implementation fg.deobf("curse.maven:world-stripper-250603:${ws_version}")
+    }
+}
