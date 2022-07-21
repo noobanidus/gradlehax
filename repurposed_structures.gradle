@@ -1,0 +1,10 @@
+apply from: 'gradle/property_helper.gradle'
+apply from: 'gradle/cursemaven.gradle'
+
+if (project.hasProperty("repurposed_version")) {
+    def rs_version = getRequiredString("repurposed_version")
+
+    dependencies {
+        implementation fg.deobf("curse.maven:repurposed-structures-368293:${rs_version}")
+    }
+}
