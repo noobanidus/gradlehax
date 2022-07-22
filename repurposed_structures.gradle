@@ -4,6 +4,18 @@ apply from: 'gradle/cursemaven.gradle'
 if (project.hasProperty("repurposed_version")) {
     def rs_version = getRequiredString("repurposed_version")
 
+    if (project.hasProperty("nonull_processors")) {
+        dependencies {
+            implementation fg.deobf("curse.maven:no-null-processors-546841:3556643")
+        }
+    }
+
+    if (project.hasProperty("deadlock")) {
+        dependencies {
+            implementation fg.deobf("curse.maven:feature-nbt-deadlock-be-gone-560323:3669114")
+        }
+    }
+
     dependencies {
         implementation fg.deobf("curse.maven:repurposed-structures-368293:${rs_version}")
     }
