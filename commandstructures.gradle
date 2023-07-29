@@ -1,0 +1,10 @@
+apply from: 'gradle/property_helper.gradle'
+apply from: 'gradle/cursemaven.gradle'
+
+if (project.hasProperty("commandstructures_version")) {
+    def commandstructures_version = getRequiredString("commandstructures_version")
+
+    dependencies {
+        implementation fg.deobf("curse.maven:commandstructures-565119:${commandstructures_version}")
+    }
+}
