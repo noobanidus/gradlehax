@@ -12,11 +12,7 @@ repositories {
     
     // This maven repository hosts files for dozens of mods. Some notable
     // mods include JEI, TinkersConstruct, and ChiselAndBits.
-    maven {
 
-        url 'https://dvs1.progwml6.com/files/maven'
-    }
-    
     // This maven repository hosts files for mods by TheIllusiveC4. This
     // includes Curios, Caelus, and other APIs.
     maven {

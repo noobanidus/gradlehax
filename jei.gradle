@@ -7,8 +7,8 @@ if (project.hasProperty("jei_version")) {
     repositories {
         maven {
             // location of the maven that hosts JEI files
-            name = "Progwml6 maven"
-            url = "https://dvs1.progwml6.com/files/maven/"
+            name = "Jared's maven"
+            url = "https://maven.blamejared.com"
         }
     }
 
