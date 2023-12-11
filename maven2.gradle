@@ -39,12 +39,12 @@ if (canLoad) {
 
                 // Adds the sources as an artifact.
                 artifact project.sourcesJar {
-                    classifier 'sources'
+                    archiveClassifier.set('sources')
                 }
 
 /*                // Adds the javadocs as an artifact.
                 artifact project.javadocJar {
-                    classifier 'javadoc'
+                    archiveClassifier.set('javadoc')
                 }*/
             }
         }
