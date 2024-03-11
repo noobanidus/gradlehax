@@ -47,8 +47,6 @@ def remapRefmap = getDefaultBoolean('mixin_remap_refmap')
 def remapRefmapFile = getDefaultString('mixin_remap_refmap_file', "${projectDir}/build/createSrgToMcp/output.srg")
 
 // Makes sure jar files are reobfuscated by Forge when built.
-jar.finalizedBy('reobfJar')
-
 minecraft.accessTransformers.file file(project.findProperty('forge_at'))
 
 runs {
