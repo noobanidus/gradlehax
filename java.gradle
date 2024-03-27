@@ -1,5 +1,9 @@
 // Sets the name of files to ModName-Forge-MCVersion.
-archivesBaseName = "${mod_id}-${minecraft_version}"
+if (project.hasProperty("archive_name")) {
+    archivesBaseName = project.archive_name
+} else {
+    archivesBaseName = "${mod_id}-${minecraft_version}"
+}
 
 java {
 
